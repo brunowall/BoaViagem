@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#000000">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:text="Destino"
+            android:lines="1"
+            android:textSize="15dp"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+
+            />
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:text="Tipo da viajem"
+            android:lines="1"
+            android:textSize="15dp"
+
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_height="30dp"
+            android:layout_width="match_parent"
+
+            >
+
+        <RadioButton
+              android:text="Lazer"
+              android:textColor="#FFFFFF"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+              />
+
+        <RadioButton
+            android:text="Negocios"
+            android:textColor="#FFFFFF"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            />
+        </RadioGroup>
+
+        <TableRow>
+        <TextView
+            android:text="Data da chegada"
+            android:textColor="#FFFFFF"
+
+
+            />
+        <TextView
+            android:text="Data da saida"
+            android:textColor="#FFFFFF"
+
+            android:layout_column="2"
+        />
+        </TableRow>
+
+
+        <TableRow
+            >
+
+        <Button
+            android:id="@+id/buttonChegada"
+            android:text="Selecione"
+            android:layout_weight="1"
+            android:onClick="selecionarData"
+            />
+
+            <Button
+            android:id="@+id/buttonSaida"
+            android:text="Selecione"
+            android:layout_weight="4"
+            android:onClick="selecionarData"
+
+            />
+
+        </TableRow>
+        <TableRow>
+
+
+        </TableRow>
+
+        <TextView
+            android:text="Orçamento"
+            android:textColor="#FFFFFF"
+
+
+            />
+        <TableRow>
+            <EditText
+                android:id="@+id/orcamento"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                />
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:text="numero de pessoas"
+                android:textColor="#FFFFFF"
+
+                android:layout_weight="50"
+                />
+            <EditText
+                android:id="@+id/npess"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:layout_weight="55"
+                android:layout_marginBottom="20dp"
+                />
+
+        </TableRow>
+
+
+        <TableRow>
+            <Button
+                android:text="Criar nova Viagem"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>
