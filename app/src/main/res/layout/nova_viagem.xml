@@ -16,6 +16,7 @@
 
             />
         <EditText
+            android:id="@+id/campoDestino"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#FFFFFF"
@@ -34,7 +35,7 @@
             android:orientation="horizontal"
             android:layout_height="30dp"
             android:layout_width="match_parent"
-
+                android:id="@+id/tipo"
             >
 
         <RadioButton
@@ -135,6 +136,7 @@
             <Button
                 android:text="Criar nova Viagem"
                 android:layout_weight="1"
+                android:onClick="criarViagem"
                 />
 
         </TableRow>

@@ -7,9 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import br.ufc.quixada.boaviagem.models.Tipo;
+import br.ufc.quixada.boaviagem.models.Viagem;
+import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
 /**
  * Created by darkbyte on 09/09/17.
@@ -20,12 +27,17 @@ public class AddViagem extends Activity {
     private Button dataSaida;
     private Date saida;
     private Date chegada;
+    private ViagemRepository viagens;
+    private EditText campoDestino;
+    private RadioGroup tipo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nova_viagem);
         dataChegada = (Button) findViewById(R.id.buttonChegada);
         dataSaida = (Button) findViewById(R.id.buttonSaida);
+        campoDestino = (EditText) findViewById(R.id.campoDestino);
+        this.tipo = (RadioGroup) findViewById(R.id.tipo);
     }
 
     public void selecionarData(View v){
@@ -64,6 +76,7 @@ public class AddViagem extends Activity {
         return null;
     }
 
+
     private Date criarData(int anoSelecionado, int mesSelecionado, int diaSelecionado)
     {
         Calendar calendar = Calendar.getInstance();
@@ -71,5 +84,11 @@ public class AddViagem extends Activity {
         return calendar.getTime();
     }
 
-
+    public void criarViagem(View view){
+        Viagem viagem = new Viagem();
+        viagem.setDestino(campoDestino.getText().toString());
+        Tipo tipo = Tipo.LAZER;
+        tipo.setValue(((RadioButton)findViewById(this.tipo.getCheckedRadioButtonId())).getText().toString());
+        viagem.setTipoViagem(tipo);
+    }
 }
