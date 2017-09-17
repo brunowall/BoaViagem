@@ -41,7 +41,11 @@ public class Viagem {
     }
 
     public Tipo getTipoViagem() {
-
         return tipoViagem;
+    }
+
+    @Override
+    public String toString() {
+        return destino+"\n"+dataSaida.toString()+" a"+" "+dataChegada;
     }
 }

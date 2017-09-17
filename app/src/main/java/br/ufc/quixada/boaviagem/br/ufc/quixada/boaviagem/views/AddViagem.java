@@ -1,4 +1,4 @@
-package br.ufc.quixada.boaviagem;
+package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -10,10 +10,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.models.Tipo;
 import br.ufc.quixada.boaviagem.models.Viagem;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
@@ -38,6 +40,7 @@ public class AddViagem extends Activity {
         dataSaida = (Button) findViewById(R.id.buttonSaida);
         campoDestino = (EditText) findViewById(R.id.campoDestino);
         this.tipo = (RadioGroup) findViewById(R.id.tipo);
+        viagens = new ViagemRepository();
     }
 
     public void selecionarData(View v){
@@ -90,5 +93,10 @@ public class AddViagem extends Activity {
         Tipo tipo = Tipo.LAZER;
         tipo.setValue(((RadioButton)findViewById(this.tipo.getCheckedRadioButtonId())).getText().toString());
         viagem.setTipoViagem(tipo);
+        viagem.setDataChegada(chegada);
+        viagem.setDataSaida(saida);
+        viagens.addViagem(viagem);
+        Toast t = Toast.makeText(this,"Viagem adicionada com sucesso",Toast.LENGTH_SHORT);
+        t.show();
     }
 }

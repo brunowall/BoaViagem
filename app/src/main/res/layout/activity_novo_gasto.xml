@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    >
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#00005F"
+        android:textColor="#FFFFFF"
+        android:text="Novo Gasto"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        />
+    <TextView
+        android:id="@+id/labelCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/titulo"
+        android:text="Categoria"
+        android:textSize="20dp"
+        />
+
+    <Spinner
+        android:id="@+id/categoriaSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/labelCategoria"
+        android:layout_marginBottom="20dp"
+        ></Spinner>
+
+       <TextView
+           android:id="@+id/labelValor"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="#FFFF"
+           android:layout_below="@id/categoriaSpinner"
+           android:text="Valor"
+           android:textSize="20dp"
+           />
+    <EditText
+        android:layout_below="@+id/labelValor"
+        android:id="@+id/valor"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="#FFFF"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/labelValor"
+        android:layout_below="@+id/categoriaSpinner"
+        android:text="Data"
+        android:textColor="#FFFF"
+        android:textSize="20dp"
+        android:id="@+id/labelData"
+        android:layout_alignLeft="@+id/buttonData"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Data"
+        android:layout_below="@+id/labelData"
+        android:layout_alignParentRight="true"
+        android:id="@+id/buttonData"
+        android:layout_alignBottom="@+id/valor"
+        android:onClick="clickData"
+        />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF"
+        android:id="@+id/labelDescricao"
+        android:textSize="20dp"
+        android:text="Descricao"
+        android:layout_below="@id/valor"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/labelDescricao"
+        android:id="@+id/descricao"
+        android:background="#FFFF"
+
+        />
+    <Spinner
+        android:id="@+id/localSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/labelLocal"
+
+        ></Spinner>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/labelLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descricao"
+        android:text="Local"
+        android:textColor="#FFFF"
+        android:textSize="20dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/localSpinner"
+        android:text="Gastei!"
+        android:onClick="criarGasto"
+        />
+</RelativeLayout>

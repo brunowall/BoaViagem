@@ -17,5 +17,20 @@ public class ViagemRepository {
     public void addViagem(Viagem viagem){
         viagens.add(viagem);
     }
+    public List<String> getLocais(){
+        List<String>locais = new LinkedList<String>();
+        for(Viagem v:viagens){
+            locais.add(v.getDestino());
+        }
+        return locais;
+    }
+
+    public String [] arrayViagems(){
+        String [] array = new String[viagens.size()];
+        for (int i = 0; i<viagens.size();i++){
+            array[i]=viagens.get(i).toString();
+        }
+        return array;
+    }
 
 }

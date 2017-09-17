@@ -1,4 +1,4 @@
-package br.ufc.quixada.boaviagem;
+package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import br.ufc.quixada.boaviagem.R;
 
 public class MainActivity extends Activity {
     public EditText usuario;
@@ -29,8 +31,6 @@ public class MainActivity extends Activity {
             toast.show();
         }else{
             Intent i = new Intent(this,TelaInicial.class);
-
-
             startActivity(i);
         }
 
