@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public class GastoRepository {
-    private List<Gasto> gastoList = new ArrayList<Gasto>();
+    private static List<Gasto> gastoList = new ArrayList<Gasto>();
 
     public List<Gasto> getGastoList() {
         return gastoList;
@@ -16,5 +16,17 @@ public class GastoRepository {
     public void addGasto(Gasto gasto){
         gastoList.add(gasto);
     }
+    public float getGastobyviagem(Viagem v){
+        float value = 0;
 
+        for(Gasto g: gastoList){
+            if(g.getViagem().getId()==v.getId())
+                value+=g.getValor();
+        }
+
+        return value;
+    }
 }
+
+
+

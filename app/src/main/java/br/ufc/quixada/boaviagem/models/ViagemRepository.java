@@ -9,7 +9,7 @@ import java.util.List;
 //gerencia as viagens
 public class ViagemRepository {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
-    private long idGenerator;
+    private static long idGenerator;
     public static List<Viagem> getViagens() {
         return viagens;
     }

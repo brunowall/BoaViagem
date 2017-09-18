@@ -56,7 +56,7 @@ public class AddViagem extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
-                chegada = criarData(i2,i1,i);
+                chegada = criarData(i,i1,i2);
                 dataChegada.setText(i2+"/"+i1+"/"+i);
             }
 
@@ -65,7 +65,7 @@ public class AddViagem extends Activity {
         DatePickerDialog.OnDateSetListener dataSaidaListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                saida = criarData(i2,i1,i);
+                saida = criarData(i,i1,i2);
                 dataSaida.setText(i2+"/"+i1+"/"+i);
             }
         };

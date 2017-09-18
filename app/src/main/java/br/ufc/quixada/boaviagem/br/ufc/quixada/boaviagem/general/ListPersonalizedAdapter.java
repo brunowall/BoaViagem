@@ -11,6 +11,8 @@ import java.util.List;
 
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views.VerViagens;
+import br.ufc.quixada.boaviagem.models.Gasto;
+import br.ufc.quixada.boaviagem.models.GastoRepository;
 import br.ufc.quixada.boaviagem.models.Viagem;
 
 /**
@@ -20,10 +22,13 @@ import br.ufc.quixada.boaviagem.models.Viagem;
 public class ListPersonalizedAdapter extends BaseAdapter {
     private List<Viagem>viagens;
     private  Activity act;
+    private GastoRepository gr;
 
-    public ListPersonalizedAdapter(List<Viagem>viagens, VerViagens activity){
+    public ListPersonalizedAdapter(List<Viagem>viagens, VerViagens activity,GastoRepository gr){
         this.viagens=viagens;
         this.act=activity;
+        this.gr = gr;
+
     }
     @Override
     public int getCount() {
@@ -50,7 +55,7 @@ public class ListPersonalizedAdapter extends BaseAdapter {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         destino.setText(viagem.getDestino());
         data.setText(sdf.format(viagem.getDataChegada()) +" a "+sdf.format(viagem.getDataChegada()));
-        gasto.setText("Gasto Total R$: ");
+        gasto.setText("Gasto Total R$: "+gr.getGastobyviagem(viagem));
         return view2;
     }
 }
