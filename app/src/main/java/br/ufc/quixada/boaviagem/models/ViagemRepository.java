@@ -1,6 +1,5 @@
 package br.ufc.quixada.boaviagem.models;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,12 +9,14 @@ import java.util.List;
 //gerencia as viagens
 public class ViagemRepository {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
-
+    private long idGenerator;
     public static List<Viagem> getViagens() {
         return viagens;
     }
     public void addViagem(Viagem viagem){
         viagens.add(viagem);
+        viagem.setId(idGenerator);
+        idGenerator++;
     }
     public List<String> getLocais(){
         List<String>locais = new LinkedList<String>();
@@ -33,4 +34,11 @@ public class ViagemRepository {
         return array;
     }
 
+    public Viagem getById(int id){
+        for(Viagem vIterator:viagens){
+            if(vIterator.getId()==id)
+                return vIterator;
+        }
+        return null;
+    }
 }

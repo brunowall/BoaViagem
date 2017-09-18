@@ -6,14 +6,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views.VerViagens;
 import br.ufc.quixada.boaviagem.models.Viagem;
-import br.ufc.quixada.boaviagem.models.ViagemRepository;
-
-import static android.support.constraint.R.id.parent;
 
 /**
  * Created by darkbyte on 16/09/17.
@@ -26,7 +24,6 @@ public class ListPersonalizedAdapter extends BaseAdapter {
     public ListPersonalizedAdapter(List<Viagem>viagens, VerViagens activity){
         this.viagens=viagens;
         this.act=activity;
-
     }
     @Override
     public int getCount() {
@@ -50,9 +47,9 @@ public class ListPersonalizedAdapter extends BaseAdapter {
         TextView destino =(TextView) view2.findViewById(R.id.destinoViagem);
         TextView data =(TextView) view2.findViewById(R.id.data);
         TextView gasto = (TextView) view2.findViewById(R.id.gasto);
-
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         destino.setText(viagem.getDestino());
-        data.setText(viagem.getDataChegada().toString()+" a "+viagem.getDataSaida().toString());
+        data.setText(sdf.format(viagem.getDataChegada()) +" a "+sdf.format(viagem.getDataChegada()));
         gasto.setText("Gasto Total R$: ");
         return view2;
     }

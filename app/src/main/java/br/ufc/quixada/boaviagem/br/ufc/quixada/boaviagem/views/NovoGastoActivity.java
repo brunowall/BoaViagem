@@ -3,7 +3,6 @@ package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import br.ufc.quixada.boaviagem.R;
+import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.SpinnerLocalAdapter;
 import br.ufc.quixada.boaviagem.models.Gasto;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
@@ -40,11 +40,12 @@ public class NovoGastoActivity extends Activity {
         botaoData = findViewById(R.id.buttonData);
         descricao = findViewById(R.id.descricao);
         valor = findViewById(R.id.valor);
+        gastoRepository = new GastoRepository();
+
         ArrayAdapter<CharSequence> adapte = ArrayAdapter.createFromResource(this,R.array.categoriasGasto,android.R.layout.simple_spinner_item);
         categoria.setAdapter(adapte);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,viagemRepository.getLocais());
-        local.setAdapter(adapter);
-        gastoRepository = new GastoRepository();
+        SpinnerLocalAdapter adapter2 = new SpinnerLocalAdapter(this,android.R.layout.simple_spinner_item,ViagemRepository.getViagens());
+        this.local.setAdapter(adapter2);
     }
     public void clickData(View view){
         showDialog(R.id.buttonData);
@@ -81,6 +82,7 @@ public class NovoGastoActivity extends Activity {
             g.setDescricao(descricao.getText().toString());
             g.setLocal(local.getSelectedItem().toString());
             g.setValor(Float.parseFloat(valor.getText().toString()));
+            g.setViagem(viagemRepository.getById((int) local.getSelectedItemId()));
             gastoRepository.addGasto(g);
             Toast t = Toast.makeText(this, "Gasto criado com sucesso", Toast.LENGTH_LONG);
             t.show();

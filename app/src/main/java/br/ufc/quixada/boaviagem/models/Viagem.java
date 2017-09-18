@@ -11,7 +11,7 @@ public class Viagem {
     private Date dataSaida;
     private Date dataChegada;
     private Tipo tipoViagem;
-
+    private long id;
     public String getDestino() {
         return destino;
     }
@@ -38,6 +38,14 @@ public class Viagem {
 
     public void setTipoViagem(Tipo tipoViagem) {
         this.tipoViagem = tipoViagem;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Tipo getTipoViagem() {

@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+
+    >
 
     <ImageView
         android:layout_width="80dp"
@@ -9,6 +11,7 @@
         android:id="@+id/imagem"
         android:layout_alignBottom="@+id/data"
         android:layout_alignTop="@+id/destinoViagem"
+
         />
     <TextView
         android:layout_width="match_parent"
@@ -16,6 +19,7 @@
         android:layout_toRightOf="@+id/imagem"
         android:id="@+id/destinoViagem"
         android:layout_marginBottom="20dp"
+        android:textColor="#FFFFFF"
         />
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +27,7 @@
         android:layout_toRightOf="@+id/imagem"
         android:layout_below="@id/destinoViagem"
         android:id="@+id/data"
-
+        android:textColor="#FFFFFF"
         />
 
     <TextView
@@ -32,6 +36,7 @@
         android:layout_toRightOf="@+id/imagem"
         android:layout_below="@id/data"
         android:id="@+id/gasto"
+        android:textColor="#FFFFFF"
         />
 
 </RelativeLayout>

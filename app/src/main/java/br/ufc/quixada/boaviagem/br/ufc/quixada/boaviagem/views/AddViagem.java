@@ -95,6 +95,7 @@ public class AddViagem extends Activity {
         viagem.setTipoViagem(tipo);
         viagem.setDataChegada(chegada);
         viagem.setDataSaida(saida);
+        viagem.setDestino(campoDestino.getText().toString());
         viagens.addViagem(viagem);
         Toast t = Toast.makeText(this,"Viagem adicionada com sucesso",Toast.LENGTH_SHORT);
         t.show();

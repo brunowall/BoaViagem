@@ -8,11 +8,12 @@ import java.util.Date;
 
 public class Gasto {
     private  Date data;
-    public String descricao;
-    public String local;
-    public String categoria;
-    public String texto;
-    public float valor;
+    private String descricao;
+    private String local;
+    private String categoria;
+    private String texto;
+    private float valor;
+    private Viagem viagem;
 
     public float getValor() {
         return valor;
@@ -52,6 +53,14 @@ public class Gasto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public Viagem getViagem() {
+        return viagem;
+    }
+
+    public void setViagem(Viagem viagem) {
+        this.viagem = viagem;
     }
 
     public String getTexto() {

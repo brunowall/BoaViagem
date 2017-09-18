@@ -1,10 +1,7 @@
 package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import br.ufc.quixada.boaviagem.R;
