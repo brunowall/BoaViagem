@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Preferencias">
+        <CheckBoxPreference
+            android:key="modo_viagem"
+            android:summary="Determina a viagem Ativa com base na data atual"
+            android:title="Modo Viagem"
+            />
+        <EditTextPreference
+            android:dialogTitle="Informe o valor limite(%)"
+            android:key="valor_limite"
+            android:defaultValue="80"
+            android:summary="Notifica quando os gastos passarem do percentual informado"
+            android:title="Alerta de gastos"/>
+    </PreferenceCategory>
+</PreferenceScreen>

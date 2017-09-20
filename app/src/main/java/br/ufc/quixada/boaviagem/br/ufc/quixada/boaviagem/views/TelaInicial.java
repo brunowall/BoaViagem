@@ -35,6 +35,10 @@ import br.ufc.quixada.boaviagem.R;
                 Intent intent =  new Intent(this,VerViagens.class);
                 startActivity(intent);
             }
+            if(((TextView) view).getText().toString().equals("Configuracoes")){
+                Intent intent =  new Intent(this,ConfiguracoesActivity.class);
+                startActivity(intent);
+            }
         }
 
     }

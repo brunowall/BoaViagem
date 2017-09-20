@@ -19,7 +19,8 @@
         <activity android:name=".br.ufc.quixada.boaviagem.views.TelaInicial" />
         <activity android:name=".br.ufc.quixada.boaviagem.views.AddViagem" />
         <activity android:name=".br.ufc.quixada.boaviagem.views.NovoGastoActivity" />
-        <activity android:name=".br.ufc.quixada.boaviagem.views.VerViagens"></activity>
+        <activity android:name=".br.ufc.quixada.boaviagem.views.VerViagens" />
+        <activity android:name=".br.ufc.quixada.boaviagem.views.ConfiguracoesActivity" />
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -56,6 +58,7 @@ public class ListPersonalizedAdapter extends BaseAdapter {
         destino.setText(viagem.getDestino());
         data.setText(sdf.format(viagem.getDataChegada()) +" a "+sdf.format(viagem.getDataChegada()));
         gasto.setText("Gasto Total R$: "+gr.getGastobyviagem(viagem));
+
         return view2;
     }
 }
