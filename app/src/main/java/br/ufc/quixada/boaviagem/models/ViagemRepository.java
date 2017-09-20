@@ -1,5 +1,7 @@
 package br.ufc.quixada.boaviagem.models;
 
+import android.util.Log;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
 //gerencia as viagens
 public class ViagemRepository {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
-    private static long idGenerator;
+    private static long idGenerator = 0;
     public static List<Viagem> getViagens() {
         return viagens;
     }
@@ -40,5 +42,17 @@ public class ViagemRepository {
                 return vIterator;
         }
         return null;
+    }
+
+    public  void removeViagem(long id){
+        for(Viagem v: viagens){
+            if(v.getId()==id){
+                viagens.remove(v);
+
+                return;
+            }
+            Log.d("Teste-remocao", "removeViagem: Teste De remocao"+id);
+        }
+        return;
     }
 }

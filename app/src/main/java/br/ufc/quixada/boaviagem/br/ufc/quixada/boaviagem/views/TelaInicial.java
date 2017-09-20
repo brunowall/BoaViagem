@@ -24,17 +24,18 @@ import br.ufc.quixada.boaviagem.R;
             if(((TextView) view).getText().toString().equals("Nova viagem")){
                 Intent intent =  new Intent(this,AddViagem.class);
                 startActivity(intent);
-
             }
 
             if(((TextView) view).getText().toString().equals("Novo gasto")){
                 Intent intent =  new Intent(this,NovoGastoActivity.class);
                 startActivity(intent);
             }
+
             if(((TextView) view).getText().toString().equals("Minhas viagens")){
                 Intent intent =  new Intent(this,VerViagens.class);
                 startActivity(intent);
             }
+
             if(((TextView) view).getText().toString().equals("Configuracoes")){
                 Intent intent =  new Intent(this,ConfiguracoesActivity.class);
                 startActivity(intent);

@@ -12,6 +12,7 @@ import android.widget.ListView;
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.ListPersonalizedAdapter;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
+import br.ufc.quixada.boaviagem.models.Viagem;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
 public class VerViagens extends Activity {
@@ -25,11 +26,13 @@ public class VerViagens extends Activity {
         setContentView(R.layout.list_activity);
         listView = (ListView) findViewById(R.id.lista);
         gr=new GastoRepository();
+        vr = new ViagemRepository();
         ListPersonalizedAdapter adapter = new ListPersonalizedAdapter(ViagemRepository.getViagens(),this,gr);
         listView.setAdapter(adapter);
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(final AdapterView<?> adapterView, final View view, int i, long l) {
+                final int itemclicked = i;
                 final CharSequence[] items = {
                         getString(R.string.editar),
                         getString(R.string.novo_gasto),
@@ -50,6 +53,31 @@ public class VerViagens extends Activity {
                             case 1:
                                 Intent intent2 = new Intent(VerViagens.this,NovoGastoActivity.class);
                                 startActivity(intent2);
+                                break;
+                            case 3:
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(VerViagens.this);
+                                AlertDialog alertDialog;
+                                builder1.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Viagem viage = (Viagem) adapterView.getItemAtPosition(itemclicked);
+                                        vr.removeViagem(viage.getId());
+                                        VerViagens.this.recreate();
+                                        return;
+
+                                    }
+                                });
+                                builder1.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        return;
+                                    }
+                                });
+
+                                builder1.setMessage("Deseja realmente apagar essa viagem?");
+                                alertDialog = builder1.create();
+                                alertDialog.show();
+
                                 break;
                         }
                     }

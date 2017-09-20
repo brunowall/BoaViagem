@@ -44,7 +44,7 @@ public class ListPersonalizedAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return viagens.get(i).getId();
     }
 
     @Override
