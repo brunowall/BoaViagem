@@ -26,6 +26,18 @@ public class GastoRepository {
 
         return value;
     }
+
+    public List<Gasto>getGastoByViagem(long vID){
+        List<Gasto> result=new ArrayList<Gasto>();
+        for(Gasto g:gastoList){
+            if(g.getViagem().getId()==vID){
+                result.add(g);
+            }
+        }
+        return result;
+    }
+
+
 }
 
 

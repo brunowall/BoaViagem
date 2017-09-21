@@ -54,6 +54,13 @@ public class VerViagens extends Activity {
                                 Intent intent2 = new Intent(VerViagens.this,NovoGastoActivity.class);
                                 startActivity(intent2);
                                 break;
+                            case 2:
+                                Intent intent3 = new Intent(VerViagens.this,ShowGastosActivity.class);
+                                Viagem viage = (Viagem) adapterView.getItemAtPosition(itemclicked);
+                                intent3.putExtra("idViagem",viage.getId());
+
+                                startActivity(intent3);
+                                break;
                             case 3:
                                 AlertDialog.Builder builder1 = new AlertDialog.Builder(VerViagens.this);
                                 AlertDialog alertDialog;

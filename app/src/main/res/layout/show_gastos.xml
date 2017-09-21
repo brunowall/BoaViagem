@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextView
+        android:id="@+id/labelData"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#000030"
+        android:paddingRight="20dp"
+        android:gravity="end"
+        android:text="Teste"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+
+        />
+
+    <TextView
+        android:layout_below="@+id/labelData"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#000070"
+        android:paddingRight="20dp"
+        android:gravity="start"
+        android:text="Teste"
+        android:textSize="20dp"
+        android:textColor="#FFFF80"
+        android:id="@+id/labelDesc"
+        />
+    <TextView
+        android:layout_below="@id/labelDesc"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#000070"
+        android:paddingRight="20dp"
+        android:gravity="start"
+        android:text="Teste"
+        android:textSize="20dp"
+        android:textColor="#FFFF80"
+        android:id="@+id/labelPreco"
+
+        />
+
+</RelativeLayout>

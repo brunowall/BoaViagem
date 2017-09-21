@@ -21,6 +21,7 @@
         <activity android:name=".br.ufc.quixada.boaviagem.views.NovoGastoActivity" />
         <activity android:name=".br.ufc.quixada.boaviagem.views.VerViagens" />
         <activity android:name=".br.ufc.quixada.boaviagem.views.ConfiguracoesActivity" android:theme="@style/PreferencesTheme"/>
+        <activity android:name=".br.ufc.quixada.boaviagem.views.ShowGastosActivity"></activity>
     </application>
 
 </manifest>
