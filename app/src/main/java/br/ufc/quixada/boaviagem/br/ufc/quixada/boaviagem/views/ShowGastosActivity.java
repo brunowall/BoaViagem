@@ -23,7 +23,7 @@ public class ShowGastosActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
         gastoRepository = new GastoRepository();
-        long id = getIntent().getExtras().getByte("idViagem");
+        long id = (long) getIntent().getExtras().getLong("idViagem");
         ShowGastosAdapter sga = new ShowGastosAdapter(this,gastoRepository.getGastoByViagem(id));
         listView = findViewById(R.id.lista);
         listView.setAdapter(sga);

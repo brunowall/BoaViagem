@@ -54,7 +54,6 @@ public class ShowGastosAdapter extends BaseAdapter {
         descricao.setText(gasto.getDescricao());
         preco.setText(gasto.getValor()+"");
         data.setText(sdf.format(gasto.getData()));
-
         return v;
     }
 }

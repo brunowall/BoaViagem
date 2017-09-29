@@ -52,13 +52,13 @@ public class NovoGastoActivity extends Activity {
     }
     @Override
     protected Dialog onCreateDialog(int id) {
-        int ano = 0;
-        int mes = 0;
-        int dia = 0;
+        int ano = Calendar.getInstance().get(Calendar.YEAR);
+        int mes = Calendar.getInstance().get(Calendar.MONTH);
+        int dia = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         DatePickerDialog.OnDateSetListener dataListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                botaoData.setText(i+"/"+i1+"/"+i2);
+                botaoData.setText(i2+"/"+i1+"/"+i);
                 dateGasto = criarData(i,i1,i2);
             }
         };
@@ -82,7 +82,7 @@ public class NovoGastoActivity extends Activity {
             g.setDescricao(descricao.getText().toString());
             g.setLocal(local.getSelectedItem().toString());
             g.setValor(Float.parseFloat(valor.getText().toString()));
-            g.setViagem(viagemRepository.getById((int) local.getSelectedItemId()));
+            g.setViagem(viagemRepository.getById((long) local.getSelectedItemId()));
             gastoRepository.addGasto(g);
             Toast t = Toast.makeText(this, "Gasto criado com sucesso", Toast.LENGTH_LONG);
             t.show();
@@ -91,5 +91,4 @@ public class NovoGastoActivity extends Activity {
             t.show();
         }
     }
-
 }

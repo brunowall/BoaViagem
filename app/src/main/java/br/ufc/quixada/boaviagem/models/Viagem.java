@@ -1,17 +1,38 @@
 package br.ufc.quixada.boaviagem.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by darkbyte on 15/09/17.
  */
 
-public class Viagem {
+public class Viagem implements Serializable{
     private String destino;
     private Date dataSaida;
     private Date dataChegada;
     private Tipo tipoViagem;
+    private int numPessoas;
     private long id;
+    private double orcamento;
+
+
+    public int getNumPessoas() {
+        return numPessoas;
+    }
+
+    public void setNumPessoas(int numPessoas) {
+        this.numPessoas = numPessoas;
+    }
+
+    public double getOrcamento() {
+        return orcamento;
+    }
+
+    public void setOrcamento(double orcamento) {
+        this.orcamento = orcamento;
+    }
+
     public String getDestino() {
         return destino;
     }

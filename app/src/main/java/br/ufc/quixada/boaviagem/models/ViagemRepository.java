@@ -11,11 +11,14 @@ import java.util.List;
 //gerencia as viagens
 public class ViagemRepository {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
-    private static long idGenerator = 0;
+    private static long idGenerator = 1;
     public static List<Viagem> getViagens() {
         return viagens;
     }
     public void addViagem(Viagem viagem){
+        if(viagem.getId()!=0){
+            removeViagem(viagem.getId());
+        }
         viagens.add(viagem);
         viagem.setId(idGenerator);
         idGenerator++;
@@ -36,7 +39,7 @@ public class ViagemRepository {
         return array;
     }
 
-    public Viagem getById(int id){
+    public Viagem getById(Long id){
         for(Viagem vIterator:viagens){
             if(vIterator.getId()==id)
                 return vIterator;
@@ -55,4 +58,6 @@ public class ViagemRepository {
         }
         return;
     }
+
+
 }
