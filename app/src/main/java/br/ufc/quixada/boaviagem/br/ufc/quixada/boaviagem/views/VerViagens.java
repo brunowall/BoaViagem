@@ -71,7 +71,6 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
         Intent intent3 = new Intent(VerViagens.this,ShowGastosActivity.class);
         Viagem viage = (Viagem) adapterView.getItemAtPosition(itemclicked);
         intent3.putExtra("idViagem",viage.getId());
-
         startActivity(intent3);
     }
 

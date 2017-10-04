@@ -68,7 +68,7 @@ public class AddViagem extends Activity {
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
                 chegada = criarData(i,i1,i2);
-                dataChegada.setText(i2+"/"+i1+"/"+i);
+                dataChegada.setText(i2+"/"+(i1+1)+"/"+i);
             }
 
 
@@ -77,7 +77,7 @@ public class AddViagem extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 saida = criarData(i,i1,i2);
-                dataSaida.setText(i2+"/"+i1+"/"+i);
+                dataSaida.setText(i2+"/"+(i1+1)+"/"+i);
             }
         };
 

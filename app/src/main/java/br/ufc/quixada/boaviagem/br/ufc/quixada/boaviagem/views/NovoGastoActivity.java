@@ -21,7 +21,7 @@ import br.ufc.quixada.boaviagem.models.Gasto;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
-public class NovoGastoActivity extends Activity {
+public class NovoGastoActivity extends Activity  implements DatePickerFragment.DatePickerListener{
     private Spinner local;
     private Spinner categoria;
     private ViagemRepository viagemRepository;
@@ -48,25 +48,11 @@ public class NovoGastoActivity extends Activity {
         this.local.setAdapter(adapter2);
     }
     public void clickData(View view){
-        showDialog(R.id.buttonData);
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.show(this.getFragmentManager(),"Data");
+
     }
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        int ano = Calendar.getInstance().get(Calendar.YEAR);
-        int mes = Calendar.getInstance().get(Calendar.MONTH);
-        int dia = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog.OnDateSetListener dataListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                botaoData.setText(i2+"/"+i1+"/"+i);
-                dateGasto = criarData(i,i1,i2);
-            }
-        };
-        if (id==R.id.buttonData){
-           return new DatePickerDialog(this,dataListener,ano,mes,dia);
-        }
-        return null;
-    }
+
 
     private Date criarData(int anoSelecionado, int mesSelecionado, int diaSelecionado)
     {
@@ -90,5 +76,11 @@ public class NovoGastoActivity extends Activity {
             Toast t = Toast.makeText(this, "erro ao criar gasto", Toast.LENGTH_LONG);
             t.show();
         }
+    }
+
+    @Override
+    public void datePickerChosed(int dia, int mes, int ano) {
+        botaoData.setText(dia+"/"+(mes+1)+"/"+ano);
+        dateGasto = criarData(ano,mes,dia);
     }
 }

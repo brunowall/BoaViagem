@@ -17,7 +17,13 @@ public class ViagemRepository {
     }
     public void addViagem(Viagem viagem){
         if(viagem.getId()!=0){
-            removeViagem(viagem.getId());
+            Viagem viagem1 = this.getById(viagem.getId());
+            viagem1.setDataSaida(viagem.getDataSaida());
+            viagem1.setDestino(viagem.getDestino());
+            viagem1.setNumPessoas(viagem.getNumPessoas());
+            viagem1.setDataChegada(viagem.getDataChegada());
+            viagem1.setOrcamento(viagem.getOrcamento());
+            return;
         }
         viagens.add(viagem);
         viagem.setId(idGenerator);
