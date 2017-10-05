@@ -23,7 +23,7 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
     private AlertDialog ad;
     private GastoRepository gr;
     private AdapterView adapterView;
-    private int itemclicked;
+    private int itemclicked; // salva o item viagem da lista que foi clicado
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +44,6 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
             }
         });
 
-
-
-
     }
 
 
@@ -63,7 +60,7 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
     @Override
     public void onClickNovoGasto() {
         Intent intent2 = new Intent(VerViagens.this,NovoGastoActivity.class);
-        startActivity(intent2);
+        startActivityForResult(intent2,1);
     }
 
     @Override
@@ -95,5 +92,13 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
         finish();
         startActivity(getIntent());
         return;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1){
+            this.listView.invalidateViews();
+            this.listView.refreshDrawableState();
+        }
     }
 }

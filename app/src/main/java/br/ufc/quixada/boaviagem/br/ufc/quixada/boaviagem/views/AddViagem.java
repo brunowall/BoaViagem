@@ -3,6 +3,7 @@ package br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import br.ufc.quixada.boaviagem.models.Viagem;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
 
-public class AddViagem extends Activity {
+public class AddViagem extends Activity implements DatePickerFragment.DatePickerListener{
     private Button dataChegada;
     private Button dataSaida;
     private Date saida;
@@ -33,6 +34,9 @@ public class AddViagem extends Activity {
     private EditText orcamento;
     private EditText numPessoas;
     private long viagemid;
+    private final String botaoChegadaConst="botaochegada";
+    private final String botaoSaidaConst = "botaosaida";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,41 +58,12 @@ public class AddViagem extends Activity {
     }
 
     public void selecionarData(View v){
-        showDialog(v.getId());
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-
-        int dia = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        int mes = Calendar.getInstance().get(Calendar.MONTH);
-        int ano = Calendar.getInstance().get(Calendar.YEAR);
-        DatePickerDialog.OnDateSetListener dataChegadalistener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-                chegada = criarData(i,i1,i2);
-                dataChegada.setText(i2+"/"+(i1+1)+"/"+i);
-            }
-
-
-        };
-        DatePickerDialog.OnDateSetListener dataSaidaListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                saida = criarData(i,i1,i2);
-                dataSaida.setText(i2+"/"+(i1+1)+"/"+i);
-            }
-        };
-
-        switch (id) {
-            case R.id.buttonChegada:
-
-                return new DatePickerDialog(this,dataChegadalistener,ano,mes,dia);
-            case R.id.buttonSaida:
-                return new DatePickerDialog(this, dataSaidaListener, ano, mes, dia);
-        }
-        return null;
+        String botaoSelecionado  = v.getId()==R.id.buttonSaida? botaoSaidaConst:botaoChegadaConst; // guarda o botao que foi clicado
+        DatePickerFragment dpf  = new DatePickerFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("botaodata",botaoSelecionado);
+        this.getIntent().putExtras(bundle);
+        dpf.show(this.getFragmentManager(),"data");
     }
 
 
@@ -121,7 +96,6 @@ public class AddViagem extends Activity {
             Toast toast = Toast.makeText(this,"Erro ao adicionar viagem por favor preencha os campos corretamente",Toast.LENGTH_SHORT);
             toast.show();
         }
-
     }
     // dado uma viagem criar a tela para a definicao
     public void buildScreenByViagem(Viagem v){
@@ -138,4 +112,16 @@ public class AddViagem extends Activity {
         this.viagemid = v.getId();
     }
 
+    @Override
+    public void datePickerChosed(String datpicker, int dia, int mes, int ano) {
+        if(datpicker.equals(botaoChegadaConst)){
+            this.dataChegada.setText(dia+"/"+(mes+1)+"/"+ano);
+            this.chegada = criarData(ano,mes,dia);
+            return;
+        }if(datpicker.equals(botaoSaidaConst)){
+            this.dataSaida.setText(dia+"/"+(mes+1)+"/"+ano);
+            this.saida = criarData(ano,mes,dia);
+            return;
+        }
+    }
 }

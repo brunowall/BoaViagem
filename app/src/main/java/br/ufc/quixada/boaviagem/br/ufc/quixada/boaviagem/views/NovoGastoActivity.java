@@ -41,7 +41,15 @@ public class NovoGastoActivity extends Activity  implements DatePickerFragment.D
         descricao = findViewById(R.id.descricao);
         valor = findViewById(R.id.valor);
         gastoRepository = new GastoRepository();
-
+        if(viagemRepository.getLocais().size()==0){
+            Toast t = Toast.makeText(this,"Voce nao possui viagens cadastradas",Toast.LENGTH_SHORT);
+            t.show();
+            finish();
+            return;
+        }
+        Calendar c = Calendar.getInstance();
+        this.dateGasto = c.getTime();
+        this.botaoData.setText(c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR));
         ArrayAdapter<CharSequence> adapte = ArrayAdapter.createFromResource(this,R.array.categoriasGasto,android.R.layout.simple_spinner_item);
         categoria.setAdapter(adapte);
         SpinnerLocalAdapter adapter2 = new SpinnerLocalAdapter(this,android.R.layout.simple_spinner_item,ViagemRepository.getViagens());
@@ -50,6 +58,7 @@ public class NovoGastoActivity extends Activity  implements DatePickerFragment.D
     public void clickData(View view){
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(this.getFragmentManager(),"Data");
+        this.getIntent().putExtra("botaodata","datagasto");
 
     }
 
@@ -79,7 +88,7 @@ public class NovoGastoActivity extends Activity  implements DatePickerFragment.D
     }
 
     @Override
-    public void datePickerChosed(int dia, int mes, int ano) {
+    public void datePickerChosed(String datpicker,int dia, int mes, int ano) {
         botaoData.setText(dia+"/"+(mes+1)+"/"+ano);
         dateGasto = criarData(ano,mes,dia);
     }

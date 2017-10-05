@@ -109,6 +109,7 @@
                 android:background="#FFFFFF"
                 android:layout_weight="1"
                 android:layout_marginBottom="20dp"
+                android:inputType="numberDecimal"
                 />
 
         </TableRow>
@@ -117,7 +118,7 @@
         <TableRow>
 
             <TextView
-                android:text="numero de pessoas"
+                android:text="Numero de pessoas:"
                 android:textColor="#FFFFFF"
 
                 android:layout_weight="50"
@@ -129,6 +130,7 @@
                 android:background="#FFFFFF"
                 android:layout_weight="55"
                 android:layout_marginBottom="20dp"
+                android:inputType="number"
                 />
 
         </TableRow>
