@@ -20,6 +20,7 @@ import java.util.Date;
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.models.Tipo;
 import br.ufc.quixada.boaviagem.models.Viagem;
+import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
 
@@ -28,7 +29,7 @@ public class AddViagem extends Activity implements DatePickerFragment.DatePicker
     private Button dataSaida;
     private Date saida;
     private Date chegada;
-    private ViagemRepository viagens;
+    private ViagemDao viagens;
     private EditText campoDestino;
     private RadioGroup tipo;
     private EditText orcamento;

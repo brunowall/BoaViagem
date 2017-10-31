@@ -18,18 +18,20 @@ import java.util.Date;
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.SpinnerLocalAdapter;
 import br.ufc.quixada.boaviagem.models.Gasto;
+import br.ufc.quixada.boaviagem.models.GastoDao;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
+import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 
 public class NovoGastoActivity extends Activity  implements DatePickerFragment.DatePickerListener{
     private Spinner local;
     private Spinner categoria;
-    private ViagemRepository viagemRepository;
+    private ViagemDao viagemRepository;
     private Date dateGasto;
     private Button botaoData;
     private EditText descricao;
     private EditText valor;
-    private GastoRepository gastoRepository;
+    private GastoDao gastoRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

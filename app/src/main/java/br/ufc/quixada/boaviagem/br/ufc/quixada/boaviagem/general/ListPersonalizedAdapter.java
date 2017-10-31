@@ -14,6 +14,7 @@ import java.util.List;
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views.VerViagens;
 import br.ufc.quixada.boaviagem.models.Gasto;
+import br.ufc.quixada.boaviagem.models.GastoDao;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
 import br.ufc.quixada.boaviagem.models.Viagem;
 
@@ -24,7 +25,7 @@ import br.ufc.quixada.boaviagem.models.Viagem;
 public class ListPersonalizedAdapter extends BaseAdapter {
     private List<Viagem>viagens;
     private  Activity act;
-    private GastoRepository gr;
+    private GastoDao gr;
 
     public ListPersonalizedAdapter(List<Viagem>viagens, VerViagens activity,GastoRepository gr){
         this.viagens=viagens;

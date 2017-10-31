@@ -10,6 +10,7 @@ import java.util.List;
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.ShowGastosAdapter;
 import br.ufc.quixada.boaviagem.models.Gasto;
+import br.ufc.quixada.boaviagem.models.GastoDao;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
 
 /**
@@ -18,7 +19,7 @@ import br.ufc.quixada.boaviagem.models.GastoRepository;
 
 public class ShowGastosActivity extends Activity {
     private ListView listView;
-    GastoRepository gastoRepository;
+    GastoDao gastoRepository;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

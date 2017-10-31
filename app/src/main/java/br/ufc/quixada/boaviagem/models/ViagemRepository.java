@@ -9,7 +9,7 @@ import java.util.List;
  * Created by darkbyte on 16/09/17.
  */
 //gerencia as viagens
-public class ViagemRepository {
+public class ViagemRepository implements ViagemDao {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
     private static long idGenerator = 1;
     public static List<Viagem> getViagens() {

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by darkbyte on 16/09/17.
  */
 
-public class GastoRepository {
+public class GastoRepository implements GastoDao{
     private static List<Gasto> gastoList = new ArrayList<Gasto>();
 
     public List<Gasto> getGastoList() {

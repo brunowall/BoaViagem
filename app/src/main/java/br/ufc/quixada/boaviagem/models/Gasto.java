@@ -14,7 +14,6 @@ public class Gasto {
     private String texto;
     private float valor;
     private Viagem viagem;
-    public char[] get;
 
     public float getValor() {
         return valor;

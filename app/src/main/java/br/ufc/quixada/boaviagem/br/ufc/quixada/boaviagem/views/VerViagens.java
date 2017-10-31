@@ -15,10 +15,11 @@ import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.ListPersonalizedAdapter;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
 import br.ufc.quixada.boaviagem.models.Viagem;
+import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views.OptionsDialog;
 public class VerViagens extends Activity implements OptionsDialog.OptionsDialogListener,RemoveConfirmDialog.RemoveConfirmListener {
-    private ViagemRepository vr;
+    private ViagemDao vr;
     private ListView listView;
     private AlertDialog ad;
     private GastoRepository gr;
