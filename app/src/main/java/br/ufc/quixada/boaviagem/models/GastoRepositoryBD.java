@@ -60,7 +60,6 @@ public class GastoRepositoryBD implements GastoDao{
         contentValues.put("data",gasto.getData().toString());
         contentValues.put("valor",gasto.getValor());
         contentValues.put("id_viagem",gasto.getViagem().getId());
-
         return contentValues;
     }
 }
