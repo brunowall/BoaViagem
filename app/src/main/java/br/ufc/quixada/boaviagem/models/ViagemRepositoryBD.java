@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,8 +23,13 @@ public class ViagemRepositoryBD implements ViagemDao {
     @Override
     public void addViagem(Viagem viagem) {
         this.bd = ph.getWritableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT * FROM viagem WHERE id= ?", new String[] { String.valueOf(viagem.getId())});
+        if(cursor.getCount()==0){
+            bd.insert("viagem",null,this.getValues(viagem));
+        }else{
+            bd.update("viagem",this.getValues(viagem),"id=?",new String[] { String.valueOf(viagem.getId())});
+        }
 
-        bd.insert("viagem",null,this.getValues(viagem));
         bd.close();
     }
 
@@ -71,6 +78,14 @@ public class ViagemRepositoryBD implements ViagemDao {
             viagem.setTipoViagem(tipo);
             viagem.setNumPessoas(cursor.getInt(cursor.getColumnIndex("num_pessoas")));
             viagem.setDestino(cursor.getString(cursor.getColumnIndex("destino")));
+            Long dataChegada = cursor.getLong(cursor.getColumnIndex("data_chegada"));
+            Long dataSaida = cursor.getLong(cursor.getColumnIndex("data_saida"));
+            Date chegada = new Date();
+            chegada.setTime(dataChegada);
+            Date saida = new Date();
+            saida.setTime(dataSaida);
+            viagem.setDataChegada(chegada);
+            viagem.setDataSaida(saida);
         }
         cursor.close();
         this.bd.close();
@@ -87,11 +102,12 @@ public class ViagemRepositoryBD implements ViagemDao {
     public ContentValues getValues(Viagem viagem){
         ContentValues cv = new ContentValues();
         cv.put("orcamento",viagem.getOrcamento());
-        cv.put("data_saida",viagem.getDataSaida().toString());
-        cv.put("data_chegada",viagem.getDataChegada().toString());
+        cv.put("data_saida",viagem.getDataSaida().getTime());
+        cv.put("data_chegada",viagem.getDataChegada().getTime());
         cv.put("destino",viagem.getDestino());
         cv.put("tipo",viagem.getTipoViagem().getValue());
         cv.put("orcamento",viagem.getOrcamento());
+        cv.put("num_pessoas",viagem.getNumPessoas());
         return cv;
     }
 

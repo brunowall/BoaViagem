@@ -29,7 +29,7 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
     private GastoDao gr;
     private AdapterView adapterView;
     private int itemclicked; // salva o item viagem da lista que foi clicado
-
+    private ListPersonalizedAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +37,9 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
         listView = (ListView) findViewById(R.id.lista);
         gr=new GastoRepositoryBD(this);
         vr = new ViagemRepositoryBD(this);
-        ListPersonalizedAdapter adapter = new ListPersonalizedAdapter(vr.getViagens(),this, (GastoRepositoryBD) gr);
+        adapter = new ListPersonalizedAdapter(vr.getViagens(),this, (GastoRepositoryBD) gr);
         listView.setAdapter(adapter);
+
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, final View view, int i, long l) {
@@ -102,8 +103,7 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1){
-            this.listView.invalidateViews();
-            this.listView.refreshDrawableState();
+            this.adapter.notifyDataSetChanged();
         }
     }
 }

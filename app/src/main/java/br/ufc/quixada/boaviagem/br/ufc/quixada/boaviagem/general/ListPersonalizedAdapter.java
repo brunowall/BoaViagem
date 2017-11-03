@@ -57,7 +57,7 @@ public class ListPersonalizedAdapter extends BaseAdapter {
         TextView gasto = (TextView) view2.findViewById(R.id.gasto);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         destino.setText(viagem.getDestino());
-       // data.setText(sdf.format(viagem.getDataSaida()) +" a "+sdf.format(viagem.getDataChegada()));
+        data.setText(sdf.format(viagem.getDataSaida()) +" a "+sdf.format(viagem.getDataChegada()));
         gasto.setText("Gasto Total R$: "+gr.getGastobyviagem(viagem));
         return view2;
     }

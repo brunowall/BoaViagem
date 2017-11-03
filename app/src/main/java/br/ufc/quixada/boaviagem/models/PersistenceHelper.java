@@ -20,7 +20,7 @@ public class PersistenceHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql1 = "CREATE TABLE viagem(id INTEGER PRIMARY KEY AUTOINCREMENT, destino Text, data_saida Date, data_chegada Date, tipo TEXT, orcamento REAL,num_pessoas INTEGER);";
         db.execSQL(sql1);
-        String sql = "CREATE TABLE gasto (id_viagem INTEGER PRIMARY KEY AUTOINCREMENT , descricao Text, local Text, categoria Text, texto Text, valor REAL,data Date);";
+        String sql = "CREATE TABLE gasto (id_viagem INTEGER , descricao Text, local Text, categoria Text, texto Text, valor REAL,data Date);";
         db.execSQL(sql);
 
     }

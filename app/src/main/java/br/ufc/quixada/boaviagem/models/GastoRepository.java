@@ -16,6 +16,12 @@ public class GastoRepository implements GastoDao{
     public void addGasto(Gasto gasto){
         gastoList.add(gasto);
     }
+
+    @Override
+    public void removeGastoByViagem(Long vID) {
+        return;
+    }
+
     public float getGastobyviagem(Viagem v){
         float value = 0;
 

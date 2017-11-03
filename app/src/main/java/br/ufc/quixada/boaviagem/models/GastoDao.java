@@ -11,4 +11,5 @@ public interface GastoDao {
     public List<Gasto> getGastoByViagem(long vID);
     public float getGastobyviagem(Viagem v);
     public void addGasto(Gasto gasto);
+    public void removeGastoByViagem(Long vID);
 }
