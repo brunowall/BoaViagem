@@ -12,7 +12,7 @@ import java.util.List;
 public class ViagemRepository implements ViagemDao {
     private static List<Viagem> viagens = new LinkedList<Viagem>();
     private static long idGenerator = 1;
-    public static List<Viagem> getViagens() {
+    public List<Viagem> getViagens() {
         return viagens;
     }
     public void addViagem(Viagem viagem){

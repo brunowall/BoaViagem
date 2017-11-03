@@ -12,4 +12,5 @@ public interface ViagemDao {
     public String [] arrayViagems();
     public Viagem getById(Long id);
     public  void removeViagem(long id);
+    public List<Viagem> getViagens();
 }

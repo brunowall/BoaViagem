@@ -14,26 +14,29 @@ import java.util.List;
 
 public class ViagemRepositoryBD implements ViagemDao {
     private SQLiteDatabase bd;
-
-    ViagemRepositoryBD(Context context){
-        PersistenceHelper ph = new PersistenceHelper(context);
-        this.bd = ph.getReadableDatabase();
+    private PersistenceHelper ph;
+    public ViagemRepositoryBD(Context context){
+        ph = new PersistenceHelper(context);
     }
     @Override
     public void addViagem(Viagem viagem) {
+        this.bd = ph.getWritableDatabase();
+
         bd.insert("viagem",null,this.getValues(viagem));
+        bd.close();
     }
 
     @Override
     public List<String> getLocais() {
-
+        this.bd = ph.getReadableDatabase();
         Cursor cursor = bd.rawQuery("select * from viagem",null);
         List<String> locais = new LinkedList<String>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+
+        while (cursor.moveToNext()){
             locais.add(cursor.getString(cursor.getColumnIndex("destino")));
         }
         cursor.close();
+        this.bd.close();
         return locais;
     }
 
@@ -42,24 +45,43 @@ public class ViagemRepositoryBD implements ViagemDao {
         return new String[0];
     }
 
+    public List<Viagem> getViagens(){
+        this.bd = ph.getReadableDatabase();
+        Cursor cursor = bd.rawQuery("select * from viagem",null);
+        List<Viagem> viagens = new LinkedList<Viagem>();
+        while (cursor.moveToNext()){
+            viagens.add(buildViagem(cursor));
+        }
+        cursor.close();
+        this.bd.close();
+        return viagens;
+    }
+
     @Override
     public Viagem getById(Long id) {
+        this.bd = ph.getReadableDatabase();
         Cursor cursor = bd.rawQuery("SELECT * FROM viagem WHERE id= ?", new String[] { String.valueOf(id)});
-        cursor.moveToFirst();
         Viagem viagem = new Viagem();
-        viagem.setId(cursor.getLong(cursor.getColumnIndex("id")));
-        Tipo tipo = null;
-        tipo.setValue(cursor.getString(cursor.getColumnIndex("tipo")));
-        viagem.setOrcamento(cursor.getDouble(cursor.getColumnIndex("orcamento")));
-        viagem.setTipoViagem(tipo);
-        viagem.setNumPessoas(cursor.getInt(cursor.getColumnIndex("num_pessoas")));
+
+        if(cursor.moveToNext()) {
+            viagem.setId(cursor.getLong(cursor.getColumnIndex("id")));
+            Tipo tipo = Tipo.LAZER;
+            tipo.setValue(cursor.getString(cursor.getColumnIndex("tipo")));
+            viagem.setOrcamento(cursor.getDouble(cursor.getColumnIndex("orcamento")));
+            viagem.setTipoViagem(tipo);
+            viagem.setNumPessoas(cursor.getInt(cursor.getColumnIndex("num_pessoas")));
+            viagem.setDestino(cursor.getString(cursor.getColumnIndex("destino")));
+        }
+        cursor.close();
+        this.bd.close();
         return viagem;
     }
 
     @Override
     public void removeViagem(long id) {
+        this.bd = ph.getWritableDatabase();
         this.bd.delete("viagem","id=?", new String[]{String.valueOf(id)});
-
+        this.bd.close();
     }
 
     public ContentValues getValues(Viagem viagem){
@@ -71,5 +93,9 @@ public class ViagemRepositoryBD implements ViagemDao {
         cv.put("tipo",viagem.getTipoViagem().getValue());
         cv.put("orcamento",viagem.getOrcamento());
         return cv;
+    }
+
+    public Viagem buildViagem(Cursor cursor){
+        return getById(cursor.getLong(cursor.getColumnIndex("id")));
     }
 }

@@ -22,7 +22,7 @@ public class GastoRepositoryBD implements GastoDao{
     }
     @Override
     public List<Gasto> getGastoByViagem(long vID) {
-        Cursor cursor = database.rawQuery("SELECT * FROM people WHERE id_viagem = ?", new String[] { String.valueOf(vID)});
+        Cursor cursor = database.rawQuery("SELECT * FROM gasto WHERE id_viagem  = ?", new String[] { String.valueOf(vID)});
         cursor.moveToFirst();
         List<Gasto>gastos = new ArrayList<Gasto>();
         while (!cursor.isAfterLast()){
@@ -40,7 +40,7 @@ public class GastoRepositoryBD implements GastoDao{
 
     @Override
     public float getGastobyviagem(Viagem v) {
-        Cursor cursor = database.rawQuery("SELECT * FROM people WHERE id_viagem = ?", new String[] { String.valueOf(v.getId())});
+        Cursor cursor = database.rawQuery("SELECT * FROM gasto WHERE id_viagem = ?", new String[] { String.valueOf(v.getId())});
         cursor.moveToFirst();
         float total = 0;
         List<Gasto>gastos = new ArrayList<Gasto>();
@@ -51,7 +51,7 @@ public class GastoRepositoryBD implements GastoDao{
     }
     @Override
     public void addGasto(Gasto gasto) {
-        this.database.insert("Gasto",null,this.getValues(gasto));
+        this.database.insert("gasto",null,this.getValues(gasto));
     }
     public ContentValues getValues(Gasto gasto){
         ContentValues contentValues =  new ContentValues();

@@ -20,8 +20,10 @@ import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.SpinnerLocalAda
 import br.ufc.quixada.boaviagem.models.Gasto;
 import br.ufc.quixada.boaviagem.models.GastoDao;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
+import br.ufc.quixada.boaviagem.models.GastoRepositoryBD;
 import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
+import br.ufc.quixada.boaviagem.models.ViagemRepositoryBD;
 
 public class NovoGastoActivity extends Activity  implements DatePickerFragment.DatePickerListener{
     private Spinner local;
@@ -36,13 +38,13 @@ public class NovoGastoActivity extends Activity  implements DatePickerFragment.D
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_gasto);
-        viagemRepository= new ViagemRepository();
+        viagemRepository= new ViagemRepositoryBD(this);
         local = findViewById(R.id.localSpinner);
         categoria =  findViewById(R.id.categoriaSpinner);
         botaoData = findViewById(R.id.buttonData);
         descricao = findViewById(R.id.descricao);
         valor = findViewById(R.id.valor);
-        gastoRepository = new GastoRepository();
+        gastoRepository = new GastoRepositoryBD(this);
         if(viagemRepository.getLocais().size()==0){
             Toast t = Toast.makeText(this,"Voce nao possui viagens cadastradas",Toast.LENGTH_SHORT);
             t.show();
@@ -54,7 +56,7 @@ public class NovoGastoActivity extends Activity  implements DatePickerFragment.D
         this.botaoData.setText(c.get(Calendar.DAY_OF_MONTH)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR));
         ArrayAdapter<CharSequence> adapte = ArrayAdapter.createFromResource(this,R.array.categoriasGasto,android.R.layout.simple_spinner_item);
         categoria.setAdapter(adapte);
-        SpinnerLocalAdapter adapter2 = new SpinnerLocalAdapter(this,android.R.layout.simple_spinner_item,ViagemRepository.getViagens());
+        SpinnerLocalAdapter adapter2 = new SpinnerLocalAdapter(this,android.R.layout.simple_spinner_item,viagemRepository.getViagens());
         this.local.setAdapter(adapter2);
     }
     public void clickData(View view){

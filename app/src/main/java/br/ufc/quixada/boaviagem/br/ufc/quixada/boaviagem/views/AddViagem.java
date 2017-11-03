@@ -22,6 +22,7 @@ import br.ufc.quixada.boaviagem.models.Tipo;
 import br.ufc.quixada.boaviagem.models.Viagem;
 import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
+import br.ufc.quixada.boaviagem.models.ViagemRepositoryBD;
 
 
 public class AddViagem extends Activity implements DatePickerFragment.DatePickerListener{
@@ -50,7 +51,7 @@ public class AddViagem extends Activity implements DatePickerFragment.DatePicker
 
         this.tipo = (RadioGroup) findViewById(R.id.tipo);
         this.tipo.check(R.id.radioLazer);
-        viagens = new ViagemRepository();
+        viagens = new ViagemRepositoryBD(this);
         if(getIntent().getExtras() != null && getIntent().getExtras().get("viagem") != null) {
             Viagem v = (Viagem) getIntent().getExtras().get("viagem");
             buildScreenByViagem(v);

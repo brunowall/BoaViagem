@@ -13,16 +13,20 @@ import android.widget.ListView;
 
 import br.ufc.quixada.boaviagem.R;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.general.ListPersonalizedAdapter;
+import br.ufc.quixada.boaviagem.models.GastoDao;
 import br.ufc.quixada.boaviagem.models.GastoRepository;
+import br.ufc.quixada.boaviagem.models.GastoRepositoryBD;
 import br.ufc.quixada.boaviagem.models.Viagem;
 import br.ufc.quixada.boaviagem.models.ViagemDao;
 import br.ufc.quixada.boaviagem.models.ViagemRepository;
 import br.ufc.quixada.boaviagem.br.ufc.quixada.boaviagem.views.OptionsDialog;
+import br.ufc.quixada.boaviagem.models.ViagemRepositoryBD;
+
 public class VerViagens extends Activity implements OptionsDialog.OptionsDialogListener,RemoveConfirmDialog.RemoveConfirmListener {
     private ViagemDao vr;
     private ListView listView;
     private AlertDialog ad;
-    private GastoRepository gr;
+    private GastoDao gr;
     private AdapterView adapterView;
     private int itemclicked; // salva o item viagem da lista que foi clicado
 
@@ -31,9 +35,9 @@ public class VerViagens extends Activity implements OptionsDialog.OptionsDialogL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_activity);
         listView = (ListView) findViewById(R.id.lista);
-        gr=new GastoRepository();
-        vr = new ViagemRepository();
-        ListPersonalizedAdapter adapter = new ListPersonalizedAdapter(ViagemRepository.getViagens(),this,gr);
+        gr=new GastoRepositoryBD(this);
+        vr = new ViagemRepositoryBD(this);
+        ListPersonalizedAdapter adapter = new ListPersonalizedAdapter(vr.getViagens(),this, (GastoRepositoryBD) gr);
         listView.setAdapter(adapter);
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
